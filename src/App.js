@@ -1,4 +1,9 @@
 import { useState } from "react"
+import { Route, Routes } from "react-router"
+import { Link } from "react-router-dom"
+import PersonProfile from "./pages/PersonProfile"
+import Dashboard from "./pages/Dashboard"
+
 import "./styles.css"
 
 export default function App() {
@@ -10,10 +15,16 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            
+            <Link to= "/"  >Dashboard</Link>
           </ul>
         </nav>
       </header>
+
+      <Routes>
+        <Route path= "/" element={<Dashboard/>} hiredPeople={hiredPeople}></Route>
+        <Route path="/view/:id" element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} />} />
+      </Routes>
     </>
   )
 }
